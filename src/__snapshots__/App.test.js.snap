@@ -1,7 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`app snapshot matches 1`] = `
-<div>
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "flexDirection": "column",
+    }
+  }
+>
   <header>
     <h1>
       Welcome to Calc
