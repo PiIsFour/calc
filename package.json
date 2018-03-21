@@ -2,6 +2,7 @@
   "name": "calc",
   "version": "0.1.0",
   "private": true,
+	"homepage": "https://PiIsFour.github.io/calc/",
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -10,6 +11,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+		"lint": "eslint src",
     "test": "react-scripts test --env=jsdom",
     "coverage": "npm test -- --coverage",
     "eject": "react-scripts eject"
