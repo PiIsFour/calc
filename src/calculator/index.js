@@ -1,4 +1,8 @@
 import React from 'react'
+import Store from '../store/store'
+import Connect from '../store/connect'
+import reducer from './reducer'
+
 import './index.css'
 
 export function CalcComponent ({onBtn}) {
@@ -30,5 +34,9 @@ export function CalcComponent ({onBtn}) {
 }
 
 export default function Calculator () {
-	return <CalcComponent onBtn={() => {}}/>
+	return <Store reducer={reducer}>
+		<Connect pick={() => {}}>
+			<CalcComponent onBtn={() => {}}/>
+		</Connect>
+	</Store>
 }
