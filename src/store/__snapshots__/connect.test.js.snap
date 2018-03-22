@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Connect snapshot matches 1`] = `
+<React.Fragment>
+  <div
+    key=".0"
+  />
+</React.Fragment>
+`;
