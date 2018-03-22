@@ -1,31 +1,34 @@
 import React from 'react'
 import './index.css'
 
-export function Component () {
+export function CalcComponent ({onBtn}) {
+	const buttons = [
+		{class: 'c', title: 'C'},
+		{class: 'sign', title: '+/-'},
+		{class: 'percent', title: '%'},
+		{class: 'divide', title: '/'},
+		{class: '7', title: '7'},
+		{class: '8', title: '8'},
+		{class: '9', title: '9'},
+		{class: 'times', title: '*'},
+		{class: '4', title: '4'},
+		{class: '5', title: '5'},
+		{class: '6', title: '6'},
+		{class: 'minus', title: '-'},
+		{class: '1', title: '1'},
+		{class: '2', title: '2'},
+		{class: '3', title: '3'},
+		{class: 'plus', title: '+'},
+		{class: '0', title: '0'},
+		{class: 'point', title: '.'},
+		{class: 'enter', title: '='}
+	]
 	return <div className="calculator">
 		<div className="display">0</div>
-		<div className="btn btn-c">C</div>
-		<div className="btn btn-sign">+/-</div>
-		<div className="btn btn-percent">%</div>
-		<div className="btn btn-divide">/</div>
-		<div className="btn btn-7">7</div>
-		<div className="btn btn-8">8</div>
-		<div className="btn btn-9">9</div>
-		<div className="btn btn-times">*</div>
-		<div className="btn btn-4">4</div>
-		<div className="btn btn-5">5</div>
-		<div className="btn btn-6">6</div>
-		<div className="btn btn-minus">-</div>
-		<div className="btn btn-1">1</div>
-		<div className="btn btn-2">2</div>
-		<div className="btn btn-3">3</div>
-		<div className="btn btn-plus">+</div>
-		<div className="btn btn-0">0</div>
-		<div className="btn btn-point">.</div>
-		<div className="btn btn-enter">=</div>
+		{buttons.map(btn => <div key={btn.class} className={'btn btn-' + btn.class} onClick={() => onBtn(btn.class)}>{btn.title}</div>)}
 	</div>
 }
 
 export default function Calculator () {
-	return <Component />
+	return <CalcComponent onBtn={() => {}}/>
 }
