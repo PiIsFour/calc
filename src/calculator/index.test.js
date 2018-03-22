@@ -6,7 +6,7 @@ import {CalcComponent} from './index'
 
 describe('calculator', () => {
 	it('snapshot matches', () => {
-		const wrapper = shallow(<CalcComponent />)
+		const wrapper = shallow(<CalcComponent value="0"/>)
 		expect(enzymeToJson(wrapper)).toMatchSnapshot()
 	})
 

@@ -2,10 +2,11 @@ import React from 'react'
 import Store from '../store/store'
 import Connect from '../store/connect'
 import reducer from './reducer'
+import {input} from './actions'
 
 import './index.css'
 
-export function CalcComponent ({onBtn}) {
+export function CalcComponent ({value, onBtn}) {
 	const buttons = [
 		{class: 'c', title: 'C'},
 		{class: 'sign', title: '+/-'},
@@ -28,15 +29,18 @@ export function CalcComponent ({onBtn}) {
 		{class: 'enter', title: '='}
 	]
 	return <div className="calculator">
-		<div className="display">0</div>
+		<div className="display">{value}</div>
 		{buttons.map(btn => <div key={btn.class} className={'btn btn-' + btn.class} onClick={() => onBtn(btn.class)}>{btn.title}</div>)}
 	</div>
 }
 
 export default function Calculator () {
 	return <Store reducer={reducer}>
-		<Connect pick={() => {}}>
-			<CalcComponent onBtn={() => {}}/>
+		<Connect pick={(state, dispatch) => ({
+			value: state.value === '' ? '0' : state.value,
+			onBtn: key => dispatch(input(key))
+		})}>
+			<CalcComponent />
 		</Connect>
 	</Store>
 }
