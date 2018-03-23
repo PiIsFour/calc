@@ -31,4 +31,11 @@ describe('calculator integation test', () => {
 		wrapper.find('.btn-enter').simulate('click')
 		expect(wrapper.find('.display')).toHaveText('2')
 	})
+
+	it('show the operration when pressed (issue#4)', () => {
+		const wrapper = mount(<Calculator />)
+		wrapper.find('.btn-5').simulate('click')
+		wrapper.find('.btn-plus').simulate('click')
+		expect(wrapper.find('.display')).toHaveText('5+')
+	})
 })

@@ -34,12 +34,23 @@ export function CalcComponent ({value, onBtn}) {
 	</div>
 }
 
-function calculateDisplay (state) {
-	if (state.value !== '') {
-		return state.value
+function calculateDisplay ({value, stack}) {
+	if (value !== '') {
+		return value
 	}
-	if (state.stack) {
-		return state.stack[0].value
+	if (stack) {
+		switch (stack[0].operation) {
+		case 'PLUS':
+			return stack[0].value + '+'
+		case 'MINUS':
+			return stack[0].value + '-'
+		case 'TIMES':
+			return stack[0].value + '*'
+		case 'DIVIDE':
+			return stack[0].value + '/'
+		default:
+		}
+		return stack[0].value
 	}
 	return 0
 }
