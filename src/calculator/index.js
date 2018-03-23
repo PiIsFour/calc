@@ -34,10 +34,20 @@ export function CalcComponent ({value, onBtn}) {
 	</div>
 }
 
+function calculateDisplay (state) {
+	if (state.value !== '') {
+		return state.value
+	}
+	if (state.stack) {
+		return state.stack[0].value
+	}
+	return 0
+}
+
 export default function Calculator () {
 	return <Store reducer={reducer}>
 		<Connect pick={(state, dispatch) => ({
-			value: state.value === '' ? '0' : state.value,
+			value: calculateDisplay(state),
 			onBtn: key => dispatch(input(key))
 		})}>
 			<CalcComponent />
