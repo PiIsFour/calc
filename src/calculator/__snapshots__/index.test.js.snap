@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`calculator snapshot matches 1`] = `
+<div
+  className="calculator"
+>
+  <div
+    className="display"
+  >
+    0
+  </div>
+  <div
+    className="btn btn-c"
+    key="c"
+    onClick={[Function]}
+  >
+    C
+  </div>
+  <div
+    className="btn btn-sign"
+    key="sign"
+    onClick={[Function]}
+  >
+    +/-
+  </div>
+  <div
+    className="btn btn-percent"
+    key="percent"
+    onClick={[Function]}
+  >
+    %
+  </div>
+  <div
+    className="btn btn-divide"
+    key="divide"
+    onClick={[Function]}
+  >
+    /
+  </div>
+  <div
+    className="btn btn-7"
+    key="7"
+    onClick={[Function]}
+  >
+    7
+  </div>
+  <div
+    className="btn btn-8"
+    key="8"
+    onClick={[Function]}
+  >
+    8
+  </div>
+  <div
+    className="btn btn-9"
+    key="9"
+    onClick={[Function]}
+  >
+    9
+  </div>
+  <div
+    className="btn btn-times"
+    key="times"
+    onClick={[Function]}
+  >
+    *
+  </div>
+  <div
+    className="btn btn-4"
+    key="4"
+    onClick={[Function]}
+  >
+    4
+  </div>
+  <div
+    className="btn btn-5"
+    key="5"
+    onClick={[Function]}
+  >
+    5
+  </div>
+  <div
+    className="btn btn-6"
+    key="6"
+    onClick={[Function]}
+  >
+    6
+  </div>
+  <div
+    className="btn btn-minus"
+    key="minus"
+    onClick={[Function]}
+  >
+    -
+  </div>
+  <div
+    className="btn btn-1"
+    key="1"
+    onClick={[Function]}
+  >
+    1
+  </div>
+  <div
+    className="btn btn-2"
+    key="2"
+    onClick={[Function]}
+  >
+    2
+  </div>
+  <div
+    className="btn btn-3"
+    key="3"
+    onClick={[Function]}
+  >
+    3
+  </div>
+  <div
+    className="btn btn-plus"
+    key="plus"
+    onClick={[Function]}
+  >
+    +
+  </div>
+  <div
+    className="btn btn-0"
+    key="0"
+    onClick={[Function]}
+  >
+    0
+  </div>
+  <div
+    className="btn btn-point"
+    key="point"
+    onClick={[Function]}
+  >
+    .
+  </div>
+  <div
+    className="btn btn-enter"
+    key="enter"
+    onClick={[Function]}
+  >
+    =
+  </div>
+</div>
+`;

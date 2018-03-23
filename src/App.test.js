@@ -15,4 +15,9 @@ describe('app', () => {
 		const wrapper = shallow(<App />)
 		expect(enzymeToJson(wrapper)).toMatchSnapshot()
 	})
+
+	it('shows the calculator', () => {
+		const wrapper = shallow(<App />)
+		expect(wrapper.find('Calculator')).toExist()
+	})
 })

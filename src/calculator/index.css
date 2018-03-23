@@ -1,0 +1,39 @@
+.calculator {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 2px;
+	background-color: #959798;
+	border-radius: 0.5rem;
+	overflow: hidden;
+	box-shadow: 2px 2px 5px 0px black;
+}
+
+.calculator > .display {
+	grid-column: span 4;
+	text-align: end;
+	font-size: 3rem;
+	padding: 1rem 1rem 0 1rem;
+	background-color: #a38060;
+	color: aliceblue;
+	cursor: text;
+}
+
+.calculator > .btn {
+	text-align: center;
+	font-size: 2rem;
+	background-color: #e0e0e0;
+	padding: 0.25rem 0.5rem;
+	cursor: pointer;
+}
+
+.calculator > .btn-divide,
+.calculator > .btn-times,
+.calculator > .btn-minus,
+.calculator > .btn-plus,
+.calculator > .btn-enter {
+	background-color: #f59240;
+}
+
+.calculator > .btn-0 {
+	grid-column: span 2;
+}
