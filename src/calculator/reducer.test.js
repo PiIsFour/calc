@@ -67,4 +67,23 @@ describe('calculator reducer', () => {
 			]
 		})
 	})
+
+	it('clears stack when new calculation begins', () => {
+		const state = {
+			value: '',
+			stack: [
+				{
+					value: 2,
+					operation: 'RESULT'
+				}
+			]
+		}
+		const action = {
+			type: actionType.input,
+			key: '7'
+		}
+		expect(reducer(state, action)).toEqual({
+			value: '7'
+		})
+	})
 })

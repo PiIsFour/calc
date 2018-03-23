@@ -4,13 +4,19 @@ const initialState = {
 	value: ''
 }
 
-function inputNumber (state, number) {
-	if (state.value === '' && number === '0') {
-		return state
+function inputNumber ({value, stack}, number) {
+	if (value === '' && number === '0') {
+		return {value, stack}
+	}
+	if (stack && stack[0].operation === 'RESULT') {
+		return {
+			value: value + number,
+			stack: undefined
+		}
 	}
 	return {
-		...state,
-		value: state.value + number
+		value: value + number,
+		stack
 	}
 }
 

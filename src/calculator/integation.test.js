@@ -17,4 +17,18 @@ describe('calculator integation test', () => {
 		wrapper.find('.btn-enter').simulate('click')
 		expect(wrapper.find('.display')).toHaveText('2')
 	})
+
+	it('second calculation works too (bug#2)', () => {
+		const wrapper = mount(<Calculator />)
+		wrapper.find('.btn-1').simulate('click')
+		wrapper.find('.btn-plus').simulate('click')
+		wrapper.find('.btn-1').simulate('click')
+		wrapper.find('.btn-enter').simulate('click')
+
+		wrapper.find('.btn-1').simulate('click')
+		wrapper.find('.btn-plus').simulate('click')
+		wrapper.find('.btn-1').simulate('click')
+		wrapper.find('.btn-enter').simulate('click')
+		expect(wrapper.find('.display')).toHaveText('2')
+	})
 })
