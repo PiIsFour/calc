@@ -23,4 +23,48 @@ describe('calculator reducer', () => {
 			value: '4'
 		})
 	})
+
+	it('puts plus operation on the stack', () => {
+		const state = {
+			value: '4'
+		}
+		const action = {
+			type: actionType.input,
+			key: 'plus'
+		}
+		expect(reducer(state, action)).toEqual({
+			value: '',
+			stack: [
+				{
+					value: 4,
+					operation: 'PLUS'
+				}
+			]
+		})
+	})
+
+	it('adds the numbers on enter', () => {
+		const state = {
+			value: '3',
+			stack: [
+				{
+					value: 2,
+					operation: 'PLUS'
+				}
+			]
+		}
+		const action = {
+			type: actionType.input,
+			key: 'enter'
+		}
+		expect(reducer(state, action)).toEqual({
+			value: '',
+			stack: [
+				{
+					value: 5,
+					operation: 'RESULT'
+				}
+			]
+		})
+	})
 })

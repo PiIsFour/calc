@@ -14,6 +14,45 @@ function inputNumber (state, number) {
 	}
 }
 
+function isCompressable (operation, newOperation) {
+	if (newOperation === 'RESULT') {
+		return true
+	}
+	return false
+}
+
+function compressOperation (latestItem, newItem) {
+	switch (latestItem.operation) {
+	case 'PLUS':
+		return {
+			value: latestItem.value + newItem.value,
+			operation: newItem.operation
+		}
+	default:
+	}
+	return null
+}
+
+function compressAddStack ([latestItem, ...restStack], newItem) {
+	if (!latestItem) {
+		return [newItem]
+	}
+	if (isCompressable(latestItem.operation, newItem.operation)) {
+		return compressAddStack([...restStack], compressOperation(latestItem, newItem))
+	}
+	return [newItem, latestItem, ...restStack]
+}
+
+function applyOperation (state, operation) {
+	return {
+		value: '',
+		stack: compressAddStack(state.stack || [], {
+			value: parseFloat(state.value),
+			operation
+		})
+	}
+}
+
 export default function reducer (state = initialState, action = {}) {
 	switch (action.type) {
 	case actionType.input:
@@ -29,6 +68,10 @@ export default function reducer (state = initialState, action = {}) {
 		case '8':
 		case '9':
 			return inputNumber(state, action.key)
+		case 'plus':
+			return applyOperation(state, 'PLUS')
+		case 'enter':
+			return applyOperation(state, 'RESULT')
 		default:
 		}
 		break
