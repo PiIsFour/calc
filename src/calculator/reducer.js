@@ -33,6 +33,12 @@ function isCompressable (operation, newOperation) {
 	if (newOperation === 'SUB') {
 		return true
 	}
+	if (operation === 'TIMES') {
+		return true
+	}
+	if (operation === 'DIVIDE') {
+		return true
+	}
 	return false
 }
 
@@ -49,6 +55,16 @@ function compressOperation (latestItem, newItem) {
 	case 'SUB':
 		return {
 			value: latestItem.value - newItem.value,
+			operation: newItem.operation
+		}
+	case 'TIMES':
+		return {
+			value: latestItem.value * newItem.value,
+			operation: newItem.operation
+		}
+	case 'DIVIDE':
+		return {
+			value: latestItem.value / newItem.value,
 			operation: newItem.operation
 		}
 	default:
@@ -104,6 +120,10 @@ export default function reducer (state = initialState, action = {}) {
 			return applyOperation(state, 'ADD')
 		case 'sub':
 			return applyOperation(state, 'SUB')
+		case 'times':
+			return applyOperation(state, 'TIMES')
+		case 'divide':
+			return applyOperation(state, 'DIVIDE')
 		case 'enter':
 			return applyOperation(state, 'RESULT')
 		default:
