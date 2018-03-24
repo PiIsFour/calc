@@ -1,18 +1,18 @@
 import {actionType} from './actions'
 
 const initialState = {
-	value: ''
+	value: '',
+	stack: [
+		{
+			value: 0,
+			operation: 'RESULT'
+		}
+	]
 }
 
 function inputNumber ({value, stack}, number) {
 	if (value === '' && number === '0') {
 		return {value, stack}
-	}
-	if (stack && stack[0].operation === 'RESULT') {
-		return {
-			value: value + number,
-			stack: undefined
-		}
 	}
 	return {
 		value: value + number,
@@ -24,10 +24,19 @@ function isCompressable (operation, newOperation) {
 	if (newOperation === 'RESULT') {
 		return true
 	}
+	if (operation === 'RESULT') {
+		return true
+	}
+	if (newOperation === 'PLUS') {
+		return true
+	}
 	return false
 }
 
 function compressOperation (latestItem, newItem) {
+	if (latestItem.operation === 'RESULT') {
+		return newItem
+	}
 	switch (latestItem.operation) {
 	case 'PLUS':
 		return {
@@ -49,11 +58,20 @@ function compressAddStack ([latestItem, ...restStack], newItem) {
 	return [newItem, latestItem, ...restStack]
 }
 
-function applyOperation (state, operation) {
+function applyOperation ({value, stack: [latestItem, ...restStack]}, operation) {
+	if (value === '') {
+		return {
+			value: '',
+			stack: compressAddStack([...restStack], {
+				value: latestItem.value,
+				operation
+			})
+		}
+	}
 	return {
 		value: '',
-		stack: compressAddStack(state.stack || [], {
-			value: parseFloat(state.value),
+		stack: compressAddStack([latestItem, ...restStack], {
+			value: parseFloat(value),
 			operation
 		})
 	}
