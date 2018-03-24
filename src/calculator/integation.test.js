@@ -12,7 +12,7 @@ describe('calculator integation test', () => {
 	it('1+1=2', () => {
 		const wrapper = mount(<Calculator />)
 		wrapper.find('.btn-1').simulate('click')
-		wrapper.find('.btn-plus').simulate('click')
+		wrapper.find('.btn-add').simulate('click')
 		wrapper.find('.btn-1').simulate('click')
 		wrapper.find('.btn-enter').simulate('click')
 		expect(wrapper.find('.display')).toHaveText('2')
@@ -21,12 +21,12 @@ describe('calculator integation test', () => {
 	it('second calculation works too (bug#2)', () => {
 		const wrapper = mount(<Calculator />)
 		wrapper.find('.btn-1').simulate('click')
-		wrapper.find('.btn-plus').simulate('click')
+		wrapper.find('.btn-add').simulate('click')
 		wrapper.find('.btn-1').simulate('click')
 		wrapper.find('.btn-enter').simulate('click')
 
 		wrapper.find('.btn-1').simulate('click')
-		wrapper.find('.btn-plus').simulate('click')
+		wrapper.find('.btn-add').simulate('click')
 		wrapper.find('.btn-1').simulate('click')
 		wrapper.find('.btn-enter').simulate('click')
 		expect(wrapper.find('.display')).toHaveText('2')
@@ -35,13 +35,23 @@ describe('calculator integation test', () => {
 	it('show the operration when pressed (issue#4)', () => {
 		const wrapper = mount(<Calculator />)
 		wrapper.find('.btn-5').simulate('click')
-		wrapper.find('.btn-plus').simulate('click')
+		wrapper.find('.btn-add').simulate('click')
 		expect(wrapper.find('.display')).toHaveText('5+')
 	})
 
 	it('operations handle it when no number is input (bug#6)', () => {
 		const wrapper = mount(<Calculator />)
-		wrapper.find('.btn-plus').simulate('click')
+		wrapper.find('.btn-add').simulate('click')
 		expect(wrapper.find('.display')).toHaveText('0+')
+	})
+
+	it('15-9- => 6-', () => {
+		const wrapper = mount(<Calculator />)
+		wrapper.find('.btn-1').simulate('click')
+		wrapper.find('.btn-5').simulate('click')
+		wrapper.find('.btn-sub').simulate('click')
+		wrapper.find('.btn-9').simulate('click')
+		wrapper.find('.btn-sub').simulate('click')
+		expect(wrapper.find('.display')).toHaveText('6-')
 	})
 })

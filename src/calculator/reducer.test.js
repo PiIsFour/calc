@@ -56,14 +56,14 @@ describe('calculator reducer', () => {
 		}
 		const action = {
 			type: actionType.input,
-			key: 'plus'
+			key: 'add'
 		}
 		expect(reducer(state, action)).toEqual({
 			value: '',
 			stack: [
 				{
 					value: 4,
-					operation: 'PLUS'
+					operation: 'ADD'
 				}
 			]
 		})
@@ -75,7 +75,7 @@ describe('calculator reducer', () => {
 			stack: [
 				{
 					value: 2,
-					operation: 'PLUS'
+					operation: 'ADD'
 				}
 			]
 		}
@@ -106,14 +106,14 @@ describe('calculator reducer', () => {
 		}
 		const action = {
 			type: actionType.input,
-			key: 'plus'
+			key: 'add'
 		}
 		expect(reducer(state, action)).toEqual({
 			value: '',
 			stack: [
 				{
 					value: 2,
-					operation: 'PLUS'
+					operation: 'ADD'
 				}
 			]
 		})
@@ -129,20 +129,45 @@ describe('calculator reducer', () => {
 				},
 				{
 					value: 2,
-					operation: 'PLUS'
+					operation: 'ADD'
 				}
 			]
 		}
 		const action = {
 			type: actionType.input,
-			key: 'plus'
+			key: 'add'
 		}
 		expect(reducer(state, action)).toEqual({
 			value: '',
 			stack: [
 				{
 					value: 4,
-					operation: 'PLUS'
+					operation: 'ADD'
+				}
+			]
+		})
+	})
+
+	it('substracts the numbers on enter', () => {
+		const state = {
+			value: '2',
+			stack: [
+				{
+					value: 3,
+					operation: 'SUB'
+				}
+			]
+		}
+		const action = {
+			type: actionType.input,
+			key: 'enter'
+		}
+		expect(reducer(state, action)).toEqual({
+			value: '',
+			stack: [
+				{
+					value: 1,
+					operation: 'RESULT'
 				}
 			]
 		})

@@ -5,7 +5,7 @@
 	background-color: #959798;
 	border-radius: 0.5rem;
 	overflow: hidden;
-	box-shadow: 2px 2px 5px 0px black;
+	box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.8);
 }
 
 .calculator > .display {
@@ -28,8 +28,8 @@
 
 .calculator > .btn-divide,
 .calculator > .btn-times,
-.calculator > .btn-minus,
-.calculator > .btn-plus,
+.calculator > .btn-sub,
+.calculator > .btn-add,
 .calculator > .btn-enter {
 	background-color: #f59240;
 }

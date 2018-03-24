@@ -27,7 +27,10 @@ function isCompressable (operation, newOperation) {
 	if (operation === 'RESULT') {
 		return true
 	}
-	if (newOperation === 'PLUS') {
+	if (newOperation === 'ADD') {
+		return true
+	}
+	if (newOperation === 'SUB') {
 		return true
 	}
 	return false
@@ -38,9 +41,14 @@ function compressOperation (latestItem, newItem) {
 		return newItem
 	}
 	switch (latestItem.operation) {
-	case 'PLUS':
+	case 'ADD':
 		return {
 			value: latestItem.value + newItem.value,
+			operation: newItem.operation
+		}
+	case 'SUB':
+		return {
+			value: latestItem.value - newItem.value,
 			operation: newItem.operation
 		}
 	default:
@@ -92,8 +100,10 @@ export default function reducer (state = initialState, action = {}) {
 		case '8':
 		case '9':
 			return inputNumber(state, action.key)
-		case 'plus':
-			return applyOperation(state, 'PLUS')
+		case 'add':
+			return applyOperation(state, 'ADD')
+		case 'sub':
+			return applyOperation(state, 'SUB')
 		case 'enter':
 			return applyOperation(state, 'RESULT')
 		default:
