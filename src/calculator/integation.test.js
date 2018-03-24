@@ -54,4 +54,17 @@ describe('calculator integation test', () => {
 		wrapper.find('.btn-sub').simulate('click')
 		expect(wrapper.find('.display')).toHaveText('6-')
 	})
+
+	it('6/3+2*4=10', () => {
+		const wrapper = mount(<Calculator />)
+		wrapper.find('.btn-6').simulate('click')
+		wrapper.find('.btn-divide').simulate('click')
+		wrapper.find('.btn-3').simulate('click')
+		wrapper.find('.btn-add').simulate('click')
+		wrapper.find('.btn-2').simulate('click')
+		wrapper.find('.btn-times').simulate('click')
+		wrapper.find('.btn-4').simulate('click')
+		wrapper.find('.btn-enter').simulate('click')
+		expect(wrapper.find('.display')).toHaveText('10')
+	})
 })
