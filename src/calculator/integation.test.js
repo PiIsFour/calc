@@ -38,4 +38,10 @@ describe('calculator integation test', () => {
 		wrapper.find('.btn-plus').simulate('click')
 		expect(wrapper.find('.display')).toHaveText('5+')
 	})
+
+	it('operations handle it when no number is input (bug#6)', () => {
+		const wrapper = mount(<Calculator />)
+		wrapper.find('.btn-plus').simulate('click')
+		expect(wrapper.find('.display')).toHaveText('0+')
+	})
 })
