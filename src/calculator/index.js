@@ -19,11 +19,11 @@ export function CalcComponent ({value, onBtn}) {
 		{class: '4', title: '4'},
 		{class: '5', title: '5'},
 		{class: '6', title: '6'},
-		{class: 'minus', title: '-'},
+		{class: 'sub', title: '-'},
 		{class: '1', title: '1'},
 		{class: '2', title: '2'},
 		{class: '3', title: '3'},
-		{class: 'plus', title: '+'},
+		{class: 'add', title: '+'},
 		{class: '0', title: '0'},
 		{class: 'point', title: '.'},
 		{class: 'enter', title: '='}
@@ -40,9 +40,9 @@ function calculateDisplay ({value, stack}) {
 	}
 	if (stack) {
 		switch (stack[0].operation) {
-		case 'PLUS':
+		case 'ADD':
 			return stack[0].value + '+'
-		case 'MINUS':
+		case 'SUB':
 			return stack[0].value + '-'
 		case 'TIMES':
 			return stack[0].value + '*'
