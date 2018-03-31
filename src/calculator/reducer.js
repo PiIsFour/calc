@@ -126,6 +126,8 @@ export default function reducer (state = initialState, action = {}) {
 			return applyOperation(state, 'DIVIDE')
 		case 'enter':
 			return applyOperation(state, 'RESULT')
+		case 'c':
+			return initialState
 		default:
 		}
 		break

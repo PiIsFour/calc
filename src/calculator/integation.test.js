@@ -67,4 +67,13 @@ describe('calculator integation test', () => {
 		wrapper.find('.btn-enter').simulate('click')
 		expect(wrapper.find('.display')).toHaveText('10')
 	})
+
+	it('resets the calculator wenn c is pressed', () => {
+		const wrapper = mount(<Calculator />)
+		wrapper.find('.btn-3').simulate('click')
+		wrapper.find('.btn-add').simulate('click')
+		wrapper.find('.btn-2').simulate('click')
+		wrapper.find('.btn-c').simulate('click')
+		expect(wrapper.find('.display')).toHaveText('0')
+	})
 })
